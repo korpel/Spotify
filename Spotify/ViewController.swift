@@ -11,7 +11,7 @@ import Alamofire
 
 class TableViewController: UITableViewController {
     
-    var searchUrl = "https://api.spotify.com/v1/search?q=Eminem&type=track"
+    var searchUrl = "https://api.spotify.com/v1/search?q=Eminem5&type=track"
     
     var names = [String]()
     
