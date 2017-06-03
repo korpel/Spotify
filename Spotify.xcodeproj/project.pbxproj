@@ -10,6 +10,7 @@
 		51B42FE0AD062923C8AC0AE5 /* Pods_SpotifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDCFCCB095CDF119596433F /* Pods_SpotifyUITests.framework */; };
 		6FA7FC1B1D0AA28D6AB63086 /* Pods_SpotifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F00380A55571C26CB0C006 /* Pods_SpotifyTests.framework */; };
 		84601310EB7A834C57E512D4 /* Pods_Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6504A1B7CCAE0A2B56A1E881 /* Pods_Spotify.framework */; };
+		EA7A7A1A1EE367B300FAF678 /* AudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7A7A191EE367B300FAF678 /* AudioVC.swift */; };
 		EAFD398A1EDE3EB7007363FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFD39891EDE3EB7007363FB /* AppDelegate.swift */; };
 		EAFD398C1EDE3EB7007363FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFD398B1EDE3EB7007363FB /* ViewController.swift */; };
 		EAFD398F1EDE3EB7007363FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAFD398D1EDE3EB7007363FB /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 		B962B42ABCAF8248163357CC /* Pods-Spotify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spotify/Pods-Spotify.debug.xcconfig"; sourceTree = "<group>"; };
 		D9055454ADE4F6BA5B054B91 /* Pods-SpotifyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifyUITests/Pods-SpotifyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E3F00380A55571C26CB0C006 /* Pods_SpotifyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotifyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA7A7A191EE367B300FAF678 /* AudioVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioVC.swift; sourceTree = "<group>"; };
 		EAFD39861EDE3EB7007363FB /* Spotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spotify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAFD39891EDE3EB7007363FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAFD398B1EDE3EB7007363FB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				EAFD39891EDE3EB7007363FB /* AppDelegate.swift */,
 				EAFD398B1EDE3EB7007363FB /* ViewController.swift */,
 				EAFD398D1EDE3EB7007363FB /* Main.storyboard */,
+				EA7A7A191EE367B300FAF678 /* AudioVC.swift */,
 				EAFD39931EDE3EB7007363FB /* Assets.xcassets */,
 				EAFD39951EDE3EB7007363FB /* LaunchScreen.storyboard */,
 				EAFD39981EDE3EB7007363FB /* Info.plist */,
@@ -452,6 +455,7 @@
 				EAFD39921EDE3EB7007363FB /* Spotify.xcdatamodeld in Sources */,
 				EAFD398C1EDE3EB7007363FB /* ViewController.swift in Sources */,
 				EAFD398A1EDE3EB7007363FB /* AppDelegate.swift in Sources */,
+				EA7A7A1A1EE367B300FAF678 /* AudioVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,6 +708,7 @@
 				EAFD39B31EDE3EB8007363FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EAFD39B41EDE3EB8007363FB /* Build configuration list for PBXNativeTarget "SpotifyTests" */ = {
 			isa = XCConfigurationList;
@@ -712,6 +717,7 @@
 				EAFD39B61EDE3EB8007363FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EAFD39B71EDE3EB8007363FB /* Build configuration list for PBXNativeTarget "SpotifyUITests" */ = {
 			isa = XCConfigurationList;
@@ -720,6 +726,7 @@
 				EAFD39B91EDE3EB8007363FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
