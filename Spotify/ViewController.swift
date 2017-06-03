@@ -9,16 +9,21 @@
 import UIKit
 import Alamofire
 
+struct post {
+    let mainImage : UIImage!
+    let name : String!
+}
+
 class TableViewController: UITableViewController {
     
-    var searchUrl = "https://api.spotify.com/v1/search?q=Eminem5&type=track"
+    var searchUrl = "https://api.spotify.com/v1/search?q=Muse&type=track"
     
-    var names = [String]()
+    var posts = [post]()
     
     typealias JSONStandard = [String : AnyObject]
     
     let headers: HTTPHeaders = [
-        "Authorization": "Bearer BQC3A5x-PGY2vqSN9p-FS_nL1wMPdBJq57aZLUXjCTxVoTIIyGzfF4agdIkp6fDflNh33fHCSjt4tSKhqcmGec1eSeYHDEEDB7iNv_BVjWzugTbSXUzfh0bLaIUv6LyK1OMi-41ZoWw",
+        "Authorization": "Bearer BQBFrpEbhTnRseC73A82Azje8Rnr_xckpajFhOunODcX9F1cdjjK0-9G9fNV6iwHheK_T0THUMaQFT96wCh6owYfp5lVjT6H_m4KumicXAVrilfoQYAAV2ITHkSzBNmDq-_eajN5LD4"
     ]
     
     override func viewDidLoad() {
@@ -43,13 +48,21 @@ class TableViewController: UITableViewController {
         do {
             let readableJson = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as! JSONStandard
             if let tracks = readableJson["tracks"] as? JSONStandard {
-                if let items = tracks["items"] {
+                if let items = tracks["items"] as? [JSONStandard] {
                     
                     for i in 0..<items.count {
-                        let item = items[i] as! JSONStandard
+                        let item = items[i]
                         let name = item["name"] as! String
-                        names.append(name)
-                        self.tableView.reloadData()
+                        if let album = item["album"] as? JSONStandard {
+                            if let images = album["images"] as? [JSONStandard] {
+                                let imageData = images[0]
+                                let mainImageUrl = URL(string: imageData["url"] as! String)
+                                let mainImageData = NSData(contentsOf: mainImageUrl!)
+                                let mainImage = UIImage(data: mainImageData as! Data)
+                                posts.append(post.init(mainImage: mainImage, name: name))
+                                self.tableView.reloadData()
+                            }
+                        }
                     }
                     
                 }
@@ -62,12 +75,16 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+        return posts.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        cell?.textLabel?.text = names[indexPath.row]
+        let mainImageView = cell?.viewWithTag(2) as! UIImageView
+        mainImageView.image = posts[indexPath.row].mainImage
+        let mainLabel = cell?.viewWithTag(1) as! UILabel
+        mainLabel.text = posts[indexPath.row].name
+        
         
         return cell!
     }
