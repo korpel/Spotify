@@ -60,14 +60,25 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRv-0R-D7f">
+                                            <rect key="frame" x="158" y="546" width="46" height="30"/>
+                                            <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="pausePlayButton:" destination="ZrR-Mb-4Ej" eventType="touchUpInside" id="9sY-19-fpM"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Lvd-fv-hRX" firstAttribute="leading" secondItem="yZB-l8-ueE" secondAttribute="leading" constant="67" id="DFi-sy-1aT"/>
                                         <constraint firstAttribute="trailing" secondItem="1TN-In-pYl" secondAttribute="trailing" constant="68" id="Kxw-g7-dpB"/>
+                                        <constraint firstAttribute="bottom" secondItem="QRv-0R-D7f" secondAttribute="bottom" constant="91" id="UE1-hw-pHq"/>
+                                        <constraint firstItem="QRv-0R-D7f" firstAttribute="top" secondItem="1TN-In-pYl" secondAttribute="bottom" constant="100" id="Wfw-K7-Mr5"/>
                                         <constraint firstItem="Lvd-fv-hRX" firstAttribute="top" secondItem="yZB-l8-ueE" secondAttribute="top" constant="120" id="amo-n6-crB"/>
                                         <constraint firstAttribute="bottom" secondItem="1TN-In-pYl" secondAttribute="bottom" constant="221" id="gOQ-0l-VWR"/>
                                         <constraint firstItem="1TN-In-pYl" firstAttribute="leading" secondItem="yZB-l8-ueE" secondAttribute="leading" constant="67" id="gOg-Bk-3Ch"/>
+                                        <constraint firstItem="QRv-0R-D7f" firstAttribute="leading" secondItem="yZB-l8-ueE" secondAttribute="leading" constant="158" id="iju-XT-V5d"/>
                                         <constraint firstAttribute="trailing" secondItem="Lvd-fv-hRX" secondAttribute="trailing" constant="68" id="l4j-ga-wLF"/>
+                                        <constraint firstAttribute="trailing" secondItem="QRv-0R-D7f" secondAttribute="trailing" constant="171" id="oIx-nS-TZ0"/>
                                         <constraint firstItem="1TN-In-pYl" firstAttribute="top" secondItem="Lvd-fv-hRX" secondAttribute="bottom" constant="8" id="q1K-8U-5Z9"/>
                                     </constraints>
                                 </view>
@@ -89,6 +100,7 @@
                     <connections>
                         <outlet property="background" destination="DNQ-Jb-iZL" id="lFv-Vv-wrA"/>
                         <outlet property="mainImageView" destination="Lvd-fv-hRX" id="lYH-YQ-zlL"/>
+                        <outlet property="playPauseBtn" destination="QRv-0R-D7f" id="3WO-ub-EYO"/>
                         <outlet property="songTitle" destination="1TN-In-pYl" id="Tgd-Ca-Vb6"/>
                     </connections>
                 </viewController>

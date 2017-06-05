@@ -8,22 +8,26 @@
 
 import UIKit
 import Alamofire
+import AVFoundation
 
 struct post {
     let mainImage : UIImage!
+    let previewURL : String
     let name : String!
 }
 
+var player = AVAudioPlayer()
+
 class TableViewController: UITableViewController {
     
-    var searchUrl = "https://api.spotify.com/v1/search?q=Muse&type=track"
+    var searchUrl = "https://api.spotify.com/v1/search?q=wutang&type=track"
     
     var posts = [post]()
     
     typealias JSONStandard = [String : AnyObject]
     
     let headers: HTTPHeaders = [
-        "Authorization": "Bearer BQBFrpEbhTnRseC73A82Azje8Rnr_xckpajFhOunODcX9F1cdjjK0-9G9fNV6iwHheK_T0THUMaQFT96wCh6owYfp5lVjT6H_m4KumicXAVrilfoQYAAV2ITHkSzBNmDq-_eajN5LD4"
+        "Authorization": "Bearer BQCVbjqf3D7SQwLpZx-V72mjufNhOA--oVP3-joL29G9LxvpkFWRKSH_kXWs7Z3Y_O_CXW2zVDenNQdy95ZqOOtIHKHXLQZckW9LqV5bal6C7wzDnZJBTlWqDkOtdR3qvdFQB7i1FUE"
     ]
     
     override func viewDidLoad() {
@@ -53,13 +57,14 @@ class TableViewController: UITableViewController {
                     for i in 0..<items.count {
                         let item = items[i]
                         let name = item["name"] as! String
+                        let previewUrl = item["preview_url"] as! String
                         if let album = item["album"] as? JSONStandard {
                             if let images = album["images"] as? [JSONStandard] {
                                 let imageData = images[0]
                                 let mainImageUrl = URL(string: imageData["url"] as! String)
                                 let mainImageData = NSData(contentsOf: mainImageUrl!)
-                                let mainImage = UIImage(data: mainImageData as! Data)
-                                posts.append(post.init(mainImage: mainImage, name: name))
+                                let mainImage = UIImage(data: mainImageData! as Data)
+                                posts.append(post.init(mainImage: mainImage, previewURL: previewUrl, name: name))
                                 self.tableView.reloadData()
                             }
                         }
@@ -93,6 +98,7 @@ class TableViewController: UITableViewController {
         let vc = segue.destination as! AudioVC
         vc.image = posts[indexPath!].mainImage
         vc.mainSongTitle = posts[indexPath!].name
+        vc.mainPreviewURL = posts[indexPath!].previewURL
     }
     
     override func didReceiveMemoryWarning() {
