@@ -18,13 +18,25 @@ struct post {
 
 var player = AVAudioPlayer()
 
-class TableViewController: UITableViewController {
+class TableViewController: UITableViewController, UISearchBarDelegate {
     
-    var searchUrl = "https://api.spotify.com/v1/search?q=wutang&type=track"
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var searchUrl = String()
     
     var posts = [post]()
     
     typealias JSONStandard = [String : AnyObject]
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        let keywords = searchBar.text
+        let finalKeywords = keywords?.replacingOccurrences(of: " ", with: "+")
+        searchUrl = "https://api.spotify.com/v1/search?q=\(finalKeywords!)&type=track"
+        print(searchUrl)
+        callAlamo(url: searchUrl)
+        self.view.endEditing(true)
+    
+    }
     
     let headers: HTTPHeaders = [
         "Authorization": "Bearer BQCVbjqf3D7SQwLpZx-V72mjufNhOA--oVP3-joL29G9LxvpkFWRKSH_kXWs7Z3Y_O_CXW2zVDenNQdy95ZqOOtIHKHXLQZckW9LqV5bal6C7wzDnZJBTlWqDkOtdR3qvdFQB7i1FUE"
@@ -32,7 +44,7 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        callAlamo(url: searchUrl)
+        
     }
     
     
